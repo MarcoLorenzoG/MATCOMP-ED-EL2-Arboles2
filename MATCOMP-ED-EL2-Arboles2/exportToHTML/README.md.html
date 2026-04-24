@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+README.md</font>
+</center></td></tr></table>
+<pre><span class="s0"># </span><span class="s2">EL2 - Parte de Árboles</span>
+<span class="s2">Los árboles son estructuras de datos organizadas de manera jerárquica.</span>
+<span class="s2">Se componen de una serie de nodos, conectados en una dirección </span><span class="s1">&quot;</span><span class="s2">descendente</span><span class="s1">&quot;</span><span class="s2">, y estos nodos en su interior contienen los datos a almacenar. </span>
+
+<span class="s2">Existen tres tipos de nodos</span><span class="s1">: </span>
+<span class="s0">* </span><span class="s2">los nodos comunes, que son los que componen el interior del árbol, </span>
+<span class="s0">* </span><span class="s2">los nodos hoja, que son los nodos que no tienen ningún nodo inferior conectados a ellos, </span>
+<span class="s0">* </span><span class="s2">y el nodo raíz, que es el único nodo al que no conecta ningún otro.</span>
+
+<span class="s2">Un árbol, dada su naturaleza recursiva, se compone de otros subárboles, los cuales a su vez se componen de otros subárboles, hasta que no existen más nodos.</span>
+
+<span class="s2">Existen distintos tipos de árboles.</span>
+<span class="s2">En esta parte de la práctica trabajaremos con los Árboles Binarios.</span>
+
+<span class="s0">## </span><span class="s2">Árboles Binarios</span>
+<span class="s2">Un árbol binario, en su modalidad de búsqueda, que es la que vamos a implementar, tiene nodos de </span><span class="s1">**</span><span class="s2">grado 2</span><span class="s1">**</span><span class="s2">.</span>
+
+<span class="s2">Pongamos sobre la mesa algunas definiciones para poder después referirnos con propiedad a distintas características de los árboles</span><span class="s1">:</span>
+<span class="s0">* </span><span class="s2">El </span><span class="s1">*</span><span class="s2">grado</span><span class="s1">* </span><span class="s2">de un nodo, que generaliza al de un árbol en su grado máximo, indica el número máximo posible de nodos </span><span class="s1">***</span><span class="s2">hijos</span><span class="s1">*** </span><span class="s2">a los que da acceso.</span>
+
+<span class="s0">* </span><span class="s2">La </span><span class="s1">*</span><span class="s2">altura</span><span class="s1">* </span><span class="s2">de un árbol indica cuántos niveles, como máximo, existe desde la raíz del árbol a su nodo hoja más alejado </span><span class="s1">(</span><span class="s2">también se calcula como </span><span class="s1">*</span><span class="s2">longitud del camino</span><span class="s1">* </span><span class="s2">máximo</span><span class="s1">)</span><span class="s2">.</span>
+
+<span class="s0">* </span><span class="s2">Se llama </span><span class="s1">*</span><span class="s2">nivel</span><span class="s1">* </span><span class="s2">al conjunto de nodos que están a la misma distancia </span><span class="s1">(</span><span class="s2">altura</span><span class="s1">) </span><span class="s2">de la raíz del árbol.</span>
+
+<span class="s0">* </span><span class="s2">Se le llama </span><span class="s1">*</span><span class="s2">camino</span><span class="s1">* </span><span class="s2">a la secuencia de nodos que hay que recorrer hasta llegar a un nodo del árbol.</span>
+
+<span class="s0">* </span><span class="s2">Se le llama </span><span class="s1">*</span><span class="s2">longitud de un camino</span><span class="s1">* </span><span class="s2">al número de saltos de nodos que hay que recorrer hasta llegar a un nodo del árbol </span><span class="s1">(</span><span class="s2">numero de nodos recorridos - 1</span><span class="s1">)</span><span class="s2">.</span>
+
+<span class="s0">* </span><span class="s2">Se dice que un árbol es </span><span class="s1">*</span><span class="s2">vacío</span><span class="s1">* </span><span class="s2">cuando no contiene ningún nodo.</span>
+
+<span class="s0">* </span><span class="s2">Se le llama </span><span class="s1">*</span><span class="s2">árbol homogéneo</span><span class="s1">* </span><span class="s2">a aquel árbol cuyos subárboles tienen todos </span><span class="s1">***</span><span class="s2">n</span><span class="s1">*** </span><span class="s2">hijos, siendo n el grado del árbol.</span>
+
+<span class="s0">* </span><span class="s2">Se le llama </span><span class="s1">*</span><span class="s2">árbol completo</span><span class="s1">* </span><span class="s2">a aquel árbol cuyas hojas están todas a la misma pronfundidad.</span>
+
+<span class="s0">* </span><span class="s2">Se le llama </span><span class="s1">*</span><span class="s2">arbol casi completo</span><span class="s1">* </span><span class="s2">a aquel árbol cuyas hojas están en dos niveles, Y las hojas del nivel más alejado de la raiz son contiguas desde la izquierda del árbol.</span>
+
+
+<span class="s2">Estas definiciones serán relevantes para referirnos a los árboles de distintos tipos.</span>
+
+<span class="s0">## </span><span class="s2">Objetivo</span>
+<span class="s2">El objetivo del trabajo a realizar es construir el TAD ArbolBinarioDeBusqueda.</span>
+<span class="s2">Este árbol binario trabajará con un tipo de datos PARAMETRIZABLE y podrá recibir </span><span class="s1">(</span><span class="s2">añadir</span><span class="s1">) </span><span class="s2">nuevos elementos.</span>
+<span class="s2">Mantendrá los datos ordenados </span><span class="s1">(</span><span class="s2">usar interfaz </span><span class="s1">&quot;</span><span class="s2">Comparable</span><span class="s1">&quot; </span><span class="s2">de Java</span><span class="s1">)</span><span class="s2">.</span>
+
+<span class="s2">Responderá a las preguntas</span><span class="s1">:</span>
+<span class="s0">* </span><span class="s2">getGrado</span><span class="s1">():</span><span class="s2">int</span>
+<span class="s0">* </span><span class="s2">getAltura</span><span class="s1">():</span><span class="s2">int</span>
+<span class="s0">* </span><span class="s2">getListaDatosNivel</span><span class="s1">(</span><span class="s2">nivel</span><span class="s1">):</span><span class="s2">Lista</span><span class="s1">&lt;TipoDato&gt;</span>
+<span class="s0">* </span><span class="s2">isArbolHomogeneo</span><span class="s1">():</span><span class="s2">Boolean</span>
+<span class="s0">* </span><span class="s2">isArbolCompleto</span><span class="s1">():</span><span class="s2">Boolean</span>
+<span class="s0">* </span><span class="s2">isArbolCasiCompleto</span><span class="s1">():</span><span class="s2">Boolean</span>
+<span class="s0">* </span><span class="s2">getCamino</span><span class="s1">(&lt;TipoDato&gt;):</span><span class="s2">Lista</span><span class="s1">&lt;TipoDato&gt;</span>
+
+<span class="s2">Permitirá las operaciones</span><span class="s1">:</span>
+<span class="s0">* </span><span class="s2">add</span><span class="s1">(&lt;TipoDato&gt;):</span><span class="s2">void</span>
+<span class="s0">* </span><span class="s2">getSubArbolIzquierda</span><span class="s1">():</span><span class="s2">ArbolBinarioDeBusqueda</span><span class="s1">&lt;TipoDato&gt;</span>
+<span class="s0">* </span><span class="s2">getSubArbolDerecha</span><span class="s1">():</span><span class="s2">ArbolBinarioDeBusqueda</span><span class="s1">&lt;TipoDato&gt;</span>
+
+<span class="s2">Generará 3 tipos de listas de datos, representando los datos que contiene</span><span class="s1">:</span>
+<span class="s0">* </span><span class="s2">getListaPreOrden</span><span class="s1">():</span><span class="s2">Lista</span><span class="s1">&lt;TipoDato&gt;</span>
+<span class="s0">* </span><span class="s2">getListaPostOrden</span><span class="s1">():</span><span class="s2">Lista</span><span class="s1">&lt;TipoDato&gt;</span>
+<span class="s0">* </span><span class="s2">getListaOrdenCentral</span><span class="s1">:</span><span class="s2">Lista</span><span class="s1">&lt;TipoDato&gt;</span>
+
+<span class="s2">Estas listas contendrán los datos de los elementos que tenga el árbol organizados según el tipo de recorrido que se indique </span><span class="s1">(</span><span class="s2">preorden, postorden u orden central</span><span class="s1">)</span><span class="s2">.</span>
+
+<span class="s2">Como ejemplo práctico</span><span class="s1">:</span>
+<span class="s0">1. </span><span class="s2">Crea una subclase ArbolBinarioDeBusquedaEnteros.</span>
+<span class="s0">2. </span><span class="s2">Añade el método que calcule la suma de los números insertados en ese árbol </span><span class="s1">(</span><span class="s2">getSuma</span><span class="s1">():</span><span class="s2">int</span><span class="s1">)</span><span class="s2">.</span>
+<span class="s0">3. </span><span class="s2">Crea un programa de prueba</span><span class="s1">:</span>
+   <span class="s0">1. </span><span class="s2">Añadir los números de 0 a 128 en orden.</span>
+   <span class="s0">2. </span><span class="s2">Calcular la suma </span><span class="s1">(</span><span class="s2">getSuma</span><span class="s1">())</span>
+   <span class="s0">3. </span><span class="s2">Verifica que la suma es la misma accediendo en los 3 tipos de recorridos posibles.</span>
+   <span class="s0">4. </span><span class="s2">Verifica que la suma es la misma cuando se suman los elementos de los subárboles izquierdo y derecho. ¿Por qué?</span>
+   <span class="s0">5. </span><span class="s2">¿Cuál es la altura del árbol?</span>
+   <span class="s0">6. </span><span class="s2">¿Cuál es el camino para llegar al valor 110? ¿Cuál es su longitud de camino?</span>
+<span class="s0">4. </span><span class="s2">Crea un segundo programa de prueba.</span>
+   <span class="s0">1. </span><span class="s2">Añade los números de 0 a 128 PERO DE MANERA ALEATORIA y sin repetir.</span>
+   <span class="s0">2. </span><span class="s2">Calcula la suma </span><span class="s1">(</span><span class="s2">getSuma</span><span class="s1">())</span>
+   <span class="s0">3. </span><span class="s2">Verifica que la suma es la misma accediendo en los 3 tipos de recorridos posibles.</span>
+   <span class="s0">4. </span><span class="s2">Verifica que la suma es la misma cuando se suman los elementos de los subárboles izquierdo y derecho. ¿Por qué?</span>
+   <span class="s0">5. </span><span class="s2">¿Cuál es la altura del árbol? ¿por qué? </span>
+   <span class="s0">6. </span><span class="s2">¿Cuál es el camino para llegar al valor 110? ¿Cuál es su longitud de camino?</span>
+
+<span class="s0">* </span><span class="s2">Explique las diferencias </span><span class="s1">(</span><span class="s2">si las ha habido</span><span class="s1">) </span><span class="s2">de los resultados obtenidos entre los dos programas de prueba.</span>
+<span class="s0">* </span><span class="s2">¿Qué sucede con los resultados si ejecuta los programas de prueba varias veces?</span>
+
+
+</pre>
+</body>
+</html>

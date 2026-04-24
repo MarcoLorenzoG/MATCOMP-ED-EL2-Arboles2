@@ -1,0 +1,46 @@
+{
+  "tipos": [
+    "tipo",
+    "persona",
+    "premio",
+    "lugar",
+    "literal"
+  ],
+  "tripletas": [
+    {
+      "s": "persona:Albert Einstein",
+      "p": "premio:Nobel",
+      "o": "1921"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "amigo_de",
+      "o": "persona:Niels Bohr"
+    },
+    {
+      "s": "persona:Niels Bohr",
+      "p": "premio:Nobel",
+      "o": "1922"
+    },
+    {
+      "s": "persona:Niels Bohr",
+      "p": "nace_en",
+      "o": "lugar:Copenhague"
+    },
+    {
+      "s": "lugar:Ulm",
+      "p": "pais",
+      "o": "lugar:Alemania"
+    },
+    {
+      "s": "lugar:Copenhague",
+      "p": "pais",
+      "o": "lugar:Dinamarca"
+    }
+  ]
+}

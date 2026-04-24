@@ -38,7 +38,7 @@ Pongamos sobre la mesa algunas definiciones para poder después referirnos con p
 Estas definiciones serán relevantes para referirnos a los árboles de distintos tipos.
 
 ## Objetivo
-El objetivo del trabajo a realizar es construir el TAD ArbolBinarioDeBusqueda.
+El objetivo del trabajo a realizar es construir el TAD EL2aArbolesBinarios.ArbolBinarioDeBusqueda.
 Este árbol binario trabajará con un tipo de datos PARAMETRIZABLE y podrá recibir (añadir) nuevos elementos.
 Mantendrá los datos ordenados (usar interfaz "Comparable" de Java).
 
@@ -53,8 +53,8 @@ Responderá a las preguntas:
 
 Permitirá las operaciones:
 * add(<TipoDato>):void
-* getSubArbolIzquierda():ArbolBinarioDeBusqueda<TipoDato>
-* getSubArbolDerecha():ArbolBinarioDeBusqueda<TipoDato>
+* getSubArbolIzquierda():EL2aArbolesBinarios.ArbolBinarioDeBusqueda<TipoDato>
+* getSubArbolDerecha():EL2aArbolesBinarios.ArbolBinarioDeBusqueda<TipoDato>
 
 Generará 3 tipos de listas de datos, representando los datos que contiene:
 * getListaPreOrden():Lista<TipoDato>
@@ -64,7 +64,7 @@ Generará 3 tipos de listas de datos, representando los datos que contiene:
 Estas listas contendrán los datos de los elementos que tenga el árbol organizados según el tipo de recorrido que se indique (preorden, postorden u orden central).
 
 Como ejemplo práctico:
-1. Crea una subclase ArbolBinarioDeBusquedaEnteros.
+1. Crea una subclase EL2aArbolesBinarios.ArbolBinarioDeBusquedaEnteros.
 2. Añade el método que calcule la suma de los números insertados en ese árbol (getSuma():int).
 3. Crea un programa de prueba:
    1. Añadir los números de 0 a 128 en orden.

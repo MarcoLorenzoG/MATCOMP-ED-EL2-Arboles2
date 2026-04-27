@@ -1,0 +1,31 @@
+{
+  "tipos": [
+    "tipo",
+    "persona",
+    "lugar",
+    "premio",
+    "literal"
+  ],
+  "tripletas": [
+    {
+      "s": "persona:Albert Einstein",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "premio:Nobel",
+      "o": "1921"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "nace_en",
+      "o": "lugar:Varsovia"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "premio:Nobel",
+      "o": "1903"
+    }
+  ]
+}

@@ -2,9 +2,23 @@ package EL2aArbolesBinarios;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-public class Main {
+public class Main{
+
+    public static int sumarLista(ListaSimplementeEnlazada<Integer> lista) {
+
+        int suma = 0;
+
+        Iterador<Integer> it = lista.getIterador();
+
+        while (it.hasNext()) {
+            suma += it.next();
+        }
+
+        return suma;
+    }
+
+
     public static void main(String[] args) {
         System.out.println("PROGRAMA DE PRUEBA 1 (Inserción Ordenada)");
         ArbolBinarioDeBusquedaEnteros arbol1 = new ArbolBinarioDeBusquedaEnteros();
@@ -19,9 +33,9 @@ public class Main {
         System.out.println("Suma total: " + suma1);
         
         // 3.3. Verifica que la suma es la misma accediendo en los 3 tipos de recorridos posibles.
-        int sumaPre1 = arbol1.getListaPreOrden().stream().mapToInt(Integer::intValue).sum();
-        int sumaPost1 = arbol1.getListaPostOrden().stream().mapToInt(Integer::intValue).sum();
-        int sumaCentral1 = arbol1.getListaOrdenCentral().stream().mapToInt(Integer::intValue).sum();
+        int sumaPre1 = sumarLista(arbol1.getListaPreOrden());
+        int sumaPost1 = sumarLista(arbol1.getListaPostOrden());
+        int sumaCentral1 = sumarLista(arbol1.getListaOrdenCentral());
         
         System.out.println("Suma PreOrden: " + sumaPre1);
         System.out.println("Suma PostOrden: " + sumaPost1);
@@ -38,22 +52,29 @@ public class Main {
         System.out.println("Altura del árbol 1: " + arbol1.getAltura());
         
         // 3.6. ¿Cuál es el camino para llegar al valor 110? ¿Cuál es su longitud de camino?
-        List<Integer> camino1 = arbol1.getCamino(110);
+        ListaSimplementeEnlazada<Integer> camino1 = arbol1.getCamino(110);
         System.out.println("Camino a 110: " + camino1);
-        System.out.println("Longitud de camino a 110: " + (camino1.size() > 0 ? camino1.size() - 1 : 0));
+        System.out.println("Longitud de camino a 110: " + (camino1.getTamaño() > 0 ? camino1.getTamaño() - 1 : 0));
         
         System.out.println("\nPROGRAMA DE PRUEBA 2 (Inserción Aleatoria)");
         ArbolBinarioDeBusquedaEnteros arbol2 = new ArbolBinarioDeBusquedaEnteros();
         
         // 4.1. Añade los números de 0 a 128 PERO DE MANERA ALEATORIA y sin repetir.
-        List<Integer> numeros = new ArrayList<>();
+        ListaSimplementeEnlazada<Integer> numeros = new ListaSimplementeEnlazada<>();
+
         for (int i = 0; i <= 128; i++) {
             numeros.add(i);
         }
-        Collections.shuffle(numeros);
-        
-        for (int num : numeros) {
+
+        while (!numeros.estaVacia()) {
+
+            int pos = (int)(Math.random() * numeros.getTamaño());
+
+            Integer num = numeros.busqPos(pos);
+
             arbol2.add(num);
+
+            numeros.eliminar(num);
         }
         
         // 4.2. Calcula la suma
@@ -61,16 +82,16 @@ public class Main {
         System.out.println("Suma total: " + suma2);
         
         // 4.3. Verifica que la suma es la misma accediendo en los 3 tipos de recorridos posibles.
-        int sumaPre2 = arbol2.getListaPreOrden().stream().mapToInt(Integer::intValue).sum();
-        int sumaPost2 = arbol2.getListaPostOrden().stream().mapToInt(Integer::intValue).sum();
-        int sumaCentral2 = arbol2.getListaOrdenCentral().stream().mapToInt(Integer::intValue).sum();
+        int sumaPre2 = sumarLista(arbol2.getListaPreOrden());
+        int sumaPost2 = sumarLista(arbol2.getListaPostOrden());
+        int sumaCentral2 = sumarLista(arbol2.getListaOrdenCentral());
         
         System.out.println("Suma PreOrden: " + sumaPre2);
         System.out.println("Suma PostOrden: " + sumaPost2);
         System.out.println("Suma OrdenCentral: " + sumaCentral2);
         
         // 4.4. Verifica que la suma es la misma cuando se suman los elementos de los subárboles izquierdo y derecho.
-        int raizDato2 = arbol2.getListaPreOrden().get(0);
+        int raizDato2 = arbol2.getListaPreOrden().busqPos(0);
         int sumaSubIzquierda2 = arbol2.getSubArbolIzquierda().getSuma();
         int sumaSubDerecha2 = arbol2.getSubArbolDerecha().getSuma();
         System.out.println("Suma Subárbol Izq + Subárbol Der + Raíz: " + (sumaSubIzquierda2 + sumaSubDerecha2 + raizDato2));
@@ -81,9 +102,9 @@ public class Main {
         System.out.println("¿Por qué? Al insertar de manera aleatoria, el árbol está más equilibrado que al insertar ordenadamente, lo que reduce la altura significativamente.");
         
         // 4.6. ¿Cuál es el camino para llegar al valor 110? ¿Cuál es su longitud de camino?
-        List<Integer> camino2 = arbol2.getCamino(110);
+        ListaSimplementeEnlazada<Integer> camino2 = arbol2.getCamino(110);
         System.out.println("Camino a 110: " + camino2);
-        System.out.println("Longitud de camino a 110: " + (camino2.size() > 0 ? camino2.size() - 1 : 0));
+        System.out.println("Longitud de camino a 110: " + (camino2.getTamaño() > 0 ? camino2.getTamaño() - 1 : 0));
         
         System.out.println("\nPREGUNTAS FINALES");
         System.out.println("Diferencias entre los resultados obtenidos: El árbol con inserción ordenada (Programa 1) es un árbol degenerado que se comporta como una lista enlazada, resultando en una altura máxima igual al número de elementos menos uno (128). En cambio, el árbol con inserción aleatoria (Programa 2) se distribuye mucho mejor (más equilibrado), reduciendo drásticamente la altura.");

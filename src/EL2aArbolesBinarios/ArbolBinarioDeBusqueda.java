@@ -1,11 +1,9 @@
 package EL2aArbolesBinarios;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
-public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
+public class ArbolBinarioDeBusqueda<T extends Comparable<T>>extends ListaSimplementeEnlazada<T>{
 
     // Clase Nodo para el árbol binario
     public class Nodo {
@@ -76,13 +74,13 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
 // Crear lista de datos de un nivel dado
-    public List<T> getListaDatosNivel(int nivel) {
-        List<T> lista = new ArrayList<>();
+    public ListaSimplementeEnlazada<T> getListaDatosNivel(int nivel) {
+        ListaSimplementeEnlazada<T> lista = new ListaSimplementeEnlazada<>();
         getListaDatosNivelRec(raiz, 0, nivel, lista);
         return lista;
     }
 
-    protected void getListaDatosNivelRec(Nodo nodo, int actual, int objetivo, List<T> lista) {
+    protected void getListaDatosNivelRec(Nodo nodo, int actual, int objetivo, ListaSimplementeEnlazada<T> lista) {
         if (nodo == null) return;
         if (actual == objetivo) {
             lista.add(nodo.dato);
@@ -150,8 +148,8 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
 // Obtener camino para llegar a un dato dado
-    public List<T> getCamino(T dato) {
-        List<T> camino = new ArrayList<>();
+    public ListaSimplementeEnlazada<T> getCamino(T dato) {
+        ListaSimplementeEnlazada<T> camino = new ListaSimplementeEnlazada<>();
         Nodo actual = raiz;
         while (actual != null) {
             camino.add(actual.dato);
@@ -164,7 +162,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
                 return camino;
             }
         }
-        return new ArrayList<>(); 
+        return camino;
     }
 
     // Añadir elementos al árbol
@@ -184,13 +182,13 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
 // Crear lista con orden de primero el padre y luego los hijos, primero la rama izquierda
-    public List<T> getListaPreOrden() {
-        List<T> lista = new ArrayList<>();
+    public ListaSimplementeEnlazada<T> getListaPreOrden() {
+        ListaSimplementeEnlazada<T> lista = new ListaSimplementeEnlazada<>();
         preOrdenRec(raiz, lista);
         return lista;
     }
 
-    protected void preOrdenRec(Nodo nodo, List<T> lista) {
+    protected void preOrdenRec(Nodo nodo, ListaSimplementeEnlazada<T> lista) {
         if (nodo != null) {
             lista.add(nodo.dato);
             preOrdenRec(nodo.izq, lista);
@@ -199,13 +197,13 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
 // Crear lista con orden de primero los hijos y al final el padre, pasando por ambas ramas
-    public List<T> getListaPostOrden() {
-        List<T> lista = new ArrayList<>();
+    public ListaSimplementeEnlazada<T> getListaPostOrden() {
+        ListaSimplementeEnlazada<T> lista = new ListaSimplementeEnlazada<>();
         postOrdenRec(raiz, lista);
         return lista;
     }
 
-    protected void postOrdenRec(Nodo nodo, List<T> lista) {
+    protected void postOrdenRec(Nodo nodo, ListaSimplementeEnlazada<T> lista) {
         if (nodo != null) {
             postOrdenRec(nodo.izq, lista);
             postOrdenRec(nodo.der, lista);
@@ -214,13 +212,13 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
 // Crear lista ordenada de menor a mayor
-    public List<T> getListaOrdenCentral() {
-        List<T> lista = new ArrayList<>();
+    public ListaSimplementeEnlazada<T> getListaOrdenCentral() {
+        ListaSimplementeEnlazada<T> lista = new ListaSimplementeEnlazada<>();
         ordenCentralRec(raiz, lista);
         return lista;
     }
 
-    protected void ordenCentralRec(Nodo nodo, List<T> lista) {
+    protected void ordenCentralRec(Nodo nodo, ListaSimplementeEnlazada<T> lista) {
         if (nodo != null) {
             ordenCentralRec(nodo.izq, lista);
             lista.add(nodo.dato);

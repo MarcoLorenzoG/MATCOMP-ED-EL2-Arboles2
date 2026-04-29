@@ -90,7 +90,7 @@ public class ListaSimplementeEnlazada<T extends Comparable<T>> implements Lista<
     @Override
     public T busqPos(int posicion) {
 
-        if (posicion < 0 && posicion >= tamaño){
+        if (posicion < 0 || posicion >= tamaño){
             return null;
         }
 

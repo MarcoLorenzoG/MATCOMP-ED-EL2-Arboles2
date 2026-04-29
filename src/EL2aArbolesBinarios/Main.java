@@ -53,7 +53,8 @@ public class Main{
         
         // 3.6. ¿Cuál es el camino para llegar al valor 110? ¿Cuál es su longitud de camino?
         ListaSimplementeEnlazada<Integer> camino1 = arbol1.getCamino(110);
-        System.out.println("Camino a 110: " + camino1);
+        System.out.println("Camino a 110: ");
+        camino1.imprimirLista();
         System.out.println("Longitud de camino a 110: " + (camino1.getTamaño() > 0 ? camino1.getTamaño() - 1 : 0));
         
         System.out.println("\nPROGRAMA DE PRUEBA 2 (Inserción Aleatoria)");
@@ -103,7 +104,8 @@ public class Main{
         
         // 4.6. ¿Cuál es el camino para llegar al valor 110? ¿Cuál es su longitud de camino?
         ListaSimplementeEnlazada<Integer> camino2 = arbol2.getCamino(110);
-        System.out.println("Camino a 110: " + camino2);
+        System.out.println("Camino a 110: ");
+        camino2.imprimirLista();
         System.out.println("Longitud de camino a 110: " + (camino2.getTamaño() > 0 ? camino2.getTamaño() - 1 : 0));
         
         System.out.println("\nPREGUNTAS FINALES");
